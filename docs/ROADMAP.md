@@ -21,6 +21,7 @@ This roadmap is intentionally research-first.
 - [ ] RFC-0001: Agent identity
 - [ ] RFC-0002: Reputation model
 - [ ] RFC-0003: Capability envelope
+- [ ] RFC-0004: On-chain reputation attestations
 - [ ] Draft evidence event schema
 - [ ] Draft lineage model
 - [ ] Draft constitutional hard limits
