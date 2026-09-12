@@ -11,7 +11,7 @@ This roadmap is intentionally research-first.
 - [x] Create first threat model
 - [x] Create RFC process
 - [x] Capture related work
-- [ ] Choose repository license
+- [x] Adopt the GNU GPLv3 copyleft license
 - [ ] Enable GitHub Discussions
 - [ ] Create discussion categories
 - [ ] Recruit initial reviewers from security, economics, cryptography, AI safety, and distributed systems

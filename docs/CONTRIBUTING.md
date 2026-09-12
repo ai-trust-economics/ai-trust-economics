@@ -77,4 +77,6 @@ Prefer short claims that can be challenged over vague certainty. Define terms. S
 
 ## Licensing
 
-A formal repository license has not yet been selected. Do not submit substantive external contributions until that is resolved.
+This project is licensed under the [GNU General Public License version 3](../LICENSE). By submitting a contribution, you agree that it may be distributed under the same GPLv3 terms.
+
+The GPLv3 is a strong copyleft license. Distributed modified versions and derivative works must preserve the freedoms granted by the license and provide corresponding source code as required by its terms. Unless a file states otherwise, this applies to source code, documentation, research artifacts, and other copyrightable contributions to the repository.

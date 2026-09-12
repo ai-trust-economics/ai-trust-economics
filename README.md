@@ -154,4 +154,8 @@ Start with:
 - [docs/threat-models/adversarial-agents-v0.1.md](docs/threat-models/adversarial-agents-v0.1.md)
 - [CONTRIBUTING.md](docs/CONTRIBUTING.md)
 
-Licensing should be chosen before accepting substantive external contributions. Until then, this repository should be treated as publicly readable but not yet formally open-source licensed.
+## License
+
+AI Trust Economics is free software licensed under the [GNU General Public License version 3](LICENSE). The GPLv3 is a strong copyleft license: you may use, study, modify, and redistribute the project, provided that distributed modified versions preserve the same freedoms and comply with the GPLv3 source-availability requirements.
+
+Unless a file states otherwise, the license applies to the source code, documentation, research artifacts, and other copyrightable material in this repository.
