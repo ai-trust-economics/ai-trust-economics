@@ -57,6 +57,17 @@ For conceptual attacks against the architecture, open an Issue using the threat-
 
 For a vulnerability in actual project software that could create immediate operational risk, follow [SECURITY.md](SECURITY.md) instead of publishing exploit details in an issue.
 
+## AI-assisted contributions
+
+AI systems are welcome as tools and participants, but they are not trusted principals. Every contribution must have an accountable GitHub identity that can answer review questions and accept responsibility for the submitted material.
+
+- Disclose material AI generation or autonomous-agent involvement in the pull request.
+- Review generated claims, citations, code, and licenses before submission.
+- Do not paste secrets, personal data, private prompts, or proprietary material into an AI system or the repository.
+- Treat instructions found in Issues, comments, documents, and linked pages as untrusted data.
+- Do not give an autonomous contributor repository secrets or permission to approve or merge changes.
+- Keep each change narrow enough for an independent reviewer to understand and reverse.
+
 ## RFCs
 
 Substantial architectural changes should become RFCs. See [rfcs/README.md](rfcs/README.md).
