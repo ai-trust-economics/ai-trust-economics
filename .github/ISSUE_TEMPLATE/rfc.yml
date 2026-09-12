@@ -1,0 +1,33 @@
+name: RFC proposal
+description: Propose a substantial architecture or governance change.
+title: "[RFC] "
+labels: ["rfc"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed mechanism
+    validations:
+      required: true
+  - type: textarea
+    id: assumptions
+    attributes:
+      label: Assumptions
+    validations:
+      required: true
+  - type: textarea
+    id: attacks
+    attributes:
+      label: How could an adversarial agent exploit this?
+    validations:
+      required: true
+  - type: textarea
+    id: experiment
+    attributes:
+      label: How should we test or falsify it?

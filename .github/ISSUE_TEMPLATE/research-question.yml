@@ -1,0 +1,27 @@
+name: Research question
+description: Propose a concrete question, literature gap, or experiment.
+title: "[RESEARCH] "
+labels: ["research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State the question as precisely as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: importance
+    attributes:
+      label: Why it matters
+    validations:
+      required: true
+  - type: textarea
+    id: known
+    attributes:
+      label: What we already know
+      description: Include primary sources where possible.
+  - type: textarea
+    id: falsify
+    attributes:
+      label: What would falsify or resolve this?

@@ -1,0 +1,36 @@
+name: Attack / threat model
+description: Try to break a proposed mechanism.
+title: "[THREAT] "
+labels: ["threat-model"]
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: Target mechanism
+      description: Which proposal, RFC, or assumption are you attacking?
+    validations:
+      required: true
+  - type: textarea
+    id: adversary
+    attributes:
+      label: Adversary capabilities
+      description: What does the attacker know, control, and value?
+    validations:
+      required: true
+  - type: textarea
+    id: attack
+    attributes:
+      label: Attack
+      description: Explain the failure mode at a research level.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+    validations:
+      required: true
+  - type: textarea
+    id: mitigations
+    attributes:
+      label: Candidate mitigations / why they may still fail
