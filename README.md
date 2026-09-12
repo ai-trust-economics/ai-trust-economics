@@ -153,6 +153,7 @@ Start with:
 - [docs/architecture/trust-infrastructure-v0.1.md](docs/architecture/trust-infrastructure-v0.1.md)
 - [docs/threat-models/adversarial-agents-v0.1.md](docs/threat-models/adversarial-agents-v0.1.md)
 - [CONTRIBUTING.md](docs/CONTRIBUTING.md)
+- [Repository security and automation policy](docs/governance/repository-security.md)
 
 ## License
 
