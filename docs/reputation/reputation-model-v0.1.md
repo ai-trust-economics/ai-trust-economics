@@ -73,3 +73,9 @@ Initial principle:
 ## Appeals
 
 Derived reputation should be recomputable after evidence is corrected. The ledger should preserve auditability without making false accusations permanent and unchallengeable.
+
+## Portable assessments
+
+Institutions may publish bounded, domain-specific reputation assessments as signed attestations. The ledger records who made each claim and when; it does not make the claim true or universally authoritative. Relying systems choose which issuers to trust and how to interpret missing, conflicting, expired, challenged, or revoked assessments.
+
+See [RFC-0004: On-Chain Reputation Attestations](../rfcs/0004-onchain-reputation-attestations.md) for the draft proposal and prototype plan.

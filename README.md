@@ -152,6 +152,7 @@ Start with:
 - [research/research-snapshot-2026-09-12.md](docs/research/research-snapshot-2026-09-12.md)
 - [docs/architecture/trust-infrastructure-v0.1.md](docs/architecture/trust-infrastructure-v0.1.md)
 - [docs/threat-models/adversarial-agents-v0.1.md](docs/threat-models/adversarial-agents-v0.1.md)
+- [RFC-0004: On-Chain Reputation Attestations](docs/rfcs/0004-onchain-reputation-attestations.md)
 - [CONTRIBUTING.md](docs/CONTRIBUTING.md)
 - [Repository security and automation policy](docs/governance/repository-security.md)
 
