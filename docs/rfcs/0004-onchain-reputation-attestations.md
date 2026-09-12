@@ -198,16 +198,59 @@ high_value_payment:
 
 Possessing a valid high score never grants a capability by itself.
 
+## Relationship to existing protocols
+
+This RFC defines an assessment profile and relying-system experiment, not a new blockchain, identity standard, or generic attestation registry.
+
+### ERC-8004
+
+[ERC-8004](https://eips.ethereum.org/EIPS/eip-8004) is direct prior art for on-chain AI-agent identity, reputation, and validation. Its Reputation Registry accepts fixed-point values, optional tags and endpoint context, and off-chain feedback references or hashes. Its Validation Registry records requests and validator responses. ERC-8004 intentionally does not determine which reviewers a relying system should trust or how feedback should be aggregated.
+
+An RFC-0004 assessment can be represented as an ERC-8004 feedback profile if the profile defines consistent mappings for:
+
+- `agentId` and the RFC's canonical subject identity;
+- score and decimal scale;
+- domain and methodology version;
+- issuer or client identity;
+- confidence, validity, replacement, revocation, and challenge status;
+- the evidence root and canonical off-chain assessment document.
+
+Not every RFC-0004 field is a first-class ERC-8004 storage field. The prototype must test whether a versioned off-chain feedback document plus its content hash is sufficiently discoverable and enforceable, or whether a separate attestation schema provides a material advantage.
+
+ERC-8004's Identity Registry uses transferable ERC-721 ownership. Transfer of control must not silently transfer behavioral standing. A relying system must inspect ownership changes, key rotation, operator delegation, provenance, and assessment scope rather than equate possession of an identity token with continuity of the evaluated runtime.
+
+### Ethereum Attestation Service
+
+[Ethereum Attestation Service](https://docs.attest.org/) is a general-purpose attestation framework rather than an agent-specific registry. It supports schema registration, on-chain and off-chain attestations, references, expiration, and revocation. EAS can represent the RFC schema directly, but it does not provide the common discovery and agent-interaction conventions of ERC-8004.
+
+### ERC-8273
+
+[ERC-8273](https://eips.ethereum.org/EIPS/eip-8273) is a draft transaction-scoped mechanism for converting an attestor's decision into an atomic on-chain action authorization. It may be useful for testing one narrow enforcement point after an assessment and action-specific policy decision. It does not replace longer-lived off-chain capability envelopes or define how reputation should be calculated.
+
+### Verifiable Credentials and transparency logs
+
+W3C Verifiable Credentials can carry portable assessments without putting the full relationship graph on a public chain. An append-only transparency log can provide public inclusion and consistency proofs without blockchain consensus. Both remain required baselines rather than deferred alternatives.
+
 ## Candidate implementation
 
-The initial prototype should evaluate the Ethereum Attestation Service (EAS) on an Ethereum test network. EAS already supports schema registration, on-chain and off-chain attestations, references, expiration, and revocation.
+The initial prototype should implement the same synthetic assessment workflow through two Ethereum test-network paths:
 
-Using an existing attestation protocol avoids deploying a custom token or designing a new blockchain. The core data model should remain independent enough to support W3C Verifiable Credentials or a non-blockchain transparency log later.
+1. an EAS schema closely matching the candidate attestation schema in this RFC;
+2. an ERC-8004-compatible feedback profile using a canonical off-chain assessment document and evidence commitment.
+
+A third, non-blockchain baseline should express the assessment as a signed Verifiable Credential or canonical signed document, with an append-only transparency log evaluated separately where public consistency is required.
+
+The prototype should then feed all paths into the same relying-policy engine. This makes it possible to measure whether blockchain-specific machinery adds useful assurance or merely cost, metadata exposure, and governance risk.
+
+Using existing protocols avoids deploying a custom token or designing a new blockchain. The policy and evidence model should remain ledger-independent.
 
 References:
 
 - [Ethereum Attestation Service documentation](https://docs.attest.org/)
 - [EAS revocation model](https://docs.attest.org/docs/core--concepts/revocation)
+- [ERC-8004: Trustless Agents](https://eips.ethereum.org/EIPS/eip-8004)
+- [ERC-8004 reference contracts](https://github.com/erc-8004/erc-8004-contracts)
+- [ERC-8273: Attestation-Gated Agentic Actions](https://eips.ethereum.org/EIPS/eip-8273)
 - [W3C Verifiable Credentials Data Model 2.0](https://www.w3.org/TR/vc-data-model-2.0/)
 - [Certificate Transparency Version 2.0](https://www.rfc-editor.org/rfc/rfc9162.html)
 
@@ -303,14 +346,16 @@ Rejected for the first prototype. Token ownership semantics obscure the fact tha
 
 Build a public test-network prototype with synthetic identities and no real-world authority.
 
-1. Register a reputation-attestation schema.
+1. Define one canonical synthetic assessment document and evidence bundle.
 2. Create several synthetic agents and independent issuers.
-3. Publish conflicting, expiring, replaced, and revoked scores.
-4. Implement configurable relying-system policies.
-5. Show how different services make different decisions from the same attestations.
-6. Add an evidence-root verifier using synthetic evidence bundles.
-7. Simulate score farming, issuer Sybils, issuer collusion, identity reset, and false accusations.
-8. Compare on-chain attestations with an off-chain signed-attestation baseline.
+3. Publish equivalent assessments through EAS and an ERC-8004 feedback profile.
+4. Express the same assessments as signed off-chain credentials or documents.
+5. Exercise conflicting, expiring, replaced, challenged, and revoked scores.
+6. Implement one configurable relying-policy engine for all three representations.
+7. Show how different services make different decisions from the same assessments.
+8. Add an evidence-root verifier using synthetic evidence bundles.
+9. Simulate score farming, issuer Sybils, issuer collusion, identity reset, ownership transfer, and false accusations.
+10. Compare assurance, interoperability, privacy leakage, cost, latency, and governance assumptions.
 
 The proposal is weakened or falsified if:
 
@@ -324,12 +369,13 @@ The proposal is weakened or falsified if:
 ## Prototype deliverables
 
 - Open-source schema and client library.
+- Documented ERC-8004 feedback profile and identity adapter.
 - Web interface for issuing and inspecting synthetic assessments.
 - Policy sandbox showing verifier-defined decisions.
 - Evidence-bundle generator and inclusion verifier.
 - Reproducible adversarial scenarios.
 - Public test deployment linked from the repository README.
-- Evaluation report comparing the blockchain and non-blockchain baselines.
+- Evaluation report comparing EAS, ERC-8004, and non-blockchain baselines.
 
 ## Open questions
 
@@ -343,3 +389,4 @@ The proposal is weakened or falsified if:
 8. Which chain or layer provides acceptable cost, finality, and governance?
 9. When is an off-chain attestation preferable to an on-chain record?
 10. Can the score remain comprehensible without becoming an unsafe universal scalar?
+11. Can RFC-0004 be expressed entirely as an ERC-8004 profile, or is a separate schema justified?
